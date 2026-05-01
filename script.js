@@ -329,3 +329,10 @@ var swiper = new Swiper(".review-slider", {
         },
     },
 });
+
+document.querySelectorAll('.navbar a').forEach(link => {
+    link.onclick = () => {
+        menu.classList.remove('fa-times');
+        navbar.classList.remove('active');
+    };
+});
