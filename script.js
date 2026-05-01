@@ -140,141 +140,136 @@ themeToggle.onclick = () => {
 };
 
 
-// Calculator
-document.getElementById('open-calc').onclick = (e) => {
-    e.preventDefault();
-    document.getElementById('calc-overlay').classList.add('active');
-}
+// ============================================================
+// COMPLETE & BALANCED CALCULATOR LOGIC
+// ============================================================
 
+document.addEventListener('DOMContentLoaded', () => {
 
-// Calculator Javasript
-     // OPEN CALCULATOR
-document.getElementById('open-calc').onclick = (e) => {
-    e.preventDefault(); // This is the most important part—it stops the 404 error
-    document.getElementById('calc-overlay').classList.add('active');
-};
+    // 1. OPEN / CLOSE LOGIC
+    const calcOverlay = document.getElementById('calc-overlay');
+    const openBtn = document.getElementById('open-calc');
+    const closeBtn = document.getElementById('close-calc');
 
-// CLOSE CALCULATOR
-document.getElementById('close-calc').onclick = () => {
-    document.getElementById('calc-overlay').classList.remove('active');
-};
+    if (openBtn) {
+        openBtn.onclick = (e) => {
+            e.preventDefault();
+            calcOverlay.classList.add('active');
+            
+            // Auto-close mobile menu if it's open
+            if (typeof navbar !== 'undefined') {
+                navbar.classList.remove('active');
+                if (typeof menu !== 'undefined') menu.classList.remove('fa-times');
+            }
+        };
+    }
 
-        // To open from anywhere in your site use:
-        // document.getElementById('calc-overlay').classList.add('active');
+    if (closeBtn) {
+        closeBtn.onclick = () => {
+            calcOverlay.classList.remove('active');
+        };
+    }
 
-        // ============================================================
-        // CALCULATOR STATE
-        // ============================================================
-        let current    = '0';
-        let previous   = '';
-        let operator   = null;
-        let freshInput = false;
+    // 2. CALCULATOR STATE
+    let current = '0';
+    let previous = '';
+    let operator = null;
+    let freshInput = false;
 
-        const resultEl     = document.getElementById('calc-result');
-        const expressionEl = document.getElementById('calc-expression');
+    const resultEl = document.getElementById('calc-result');
+    const expressionEl = document.getElementById('calc-expression');
 
-        function updateDisplay() {
-            resultEl.textContent = current.length > 10
-                ? parseFloat(current).toExponential(4)
-                : current;
-        }
+    function updateDisplay() {
+        if (!resultEl) return;
+        resultEl.textContent = current.length > 10
+            ? parseFloat(current).toExponential(4)
+            : current;
+    }
 
-        // ============================================================
-        // BUTTON CLICKS
-        // ============================================================
-        document.querySelectorAll('.calc-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const action = btn.dataset.action;
-                const value  = btn.dataset.value;
+    function calculate() {
+        const a = parseFloat(previous);
+        const b = parseFloat(current);
+        let res;
+        if (operator === '+') res = a + b;
+        else if (operator === '-') res = a - b;
+        else if (operator === '*') res = a * b;
+        else if (operator === '/') res = b !== 0 ? a / b : 'Error';
+        
+        current = res === 'Error' ? 'Error' : String(parseFloat(res.toFixed(10)));
+        freshInput = true;
+    }
 
-                if (action === 'number') {
-                    if (current === '0' || freshInput) {
-                        current    = value;
-                        freshInput = false;
-                    } else {
-                        if (current.length < 12) current += value;
-                    }
+    function displayOp(op) {
+        return { '+': '+', '-': '−', '*': '×', '/': '÷' }[op] || op;
+    }
 
-                } else if (action === 'decimal') {
-                    if (freshInput) { current = '0.'; freshInput = false; return updateDisplay(); }
-                    if (!current.includes('.')) current += '.';
+    // 3. BUTTON CLICKS
+    document.querySelectorAll('.calc-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const action = btn.dataset.action;
+            const value = btn.dataset.value;
 
-                } else if (action === 'operator') {
-                    if (operator && !freshInput) calculate();
-                    previous   = current;
-                    operator   = value;
-                    freshInput = true;
-                    expressionEl.textContent = `${previous} ${displayOp(value)}`;
-
-                } else if (action === 'equals') {
-                    if (!operator) return;
-                    expressionEl.textContent = `${previous} ${displayOp(operator)} ${current} =`;
-                    calculate();
-                    operator = null;
-
-                } else if (action === 'clear') {
-                    current = '0'; previous = ''; operator = null; freshInput = false;
-                    expressionEl.textContent = '';
-
-                } else if (action === 'sign') {
-                    current = String(parseFloat(current) * -1);
-
-                } else if (action === 'percent') {
-                    current = String(parseFloat(current) / 100);
+            if (action === 'number') {
+                if (current === '0' || freshInput) {
+                    current = value;
+                    freshInput = false;
+                } else {
+                    if (current.length < 12) current += value;
                 }
-
-                updateDisplay();
-            });
-        });
-
-        // ============================================================
-        // CALCULATE
-        // ============================================================
-        function calculate() {
-            const a = parseFloat(previous);
-            const b = parseFloat(current);
-            let res;
-            if      (operator === '+') res = a + b;
-            else if (operator === '-') res = a - b;
-            else if (operator === '*') res = a * b;
-            else if (operator === '/') res = b !== 0 ? a / b : 'Error';
-            current    = res === 'Error' ? 'Error' : String(parseFloat(res.toFixed(10)));
-            freshInput = true;
-        }
-
-        function displayOp(op) {
-            return { '+': '+', '-': '−', '*': '×', '/': '÷' }[op] || op;
-        }
-
-        // ============================================================
-        // KEYBOARD SUPPORT
-        // ============================================================
-        document.addEventListener('keydown', e => {
-            if (!document.getElementById('calc-overlay').classList.contains('active')) return;
-
-            const map = {
-                '0':'0','1':'1','2':'2','3':'3','4':'4',
-                '5':'5','6':'6','7':'7','8':'8','9':'9',
-                '+':'+','-':'-','*':'*','/':'/',
-                'Enter':'=', '=':'=', 'Backspace':'back', '.':'.'
-            };
-            const key = map[e.key];
-            if (!key) return;
-
-            if (key === 'back') {
-                current = current.length > 1 ? current.slice(0, -1) : '0';
-                return updateDisplay();
+            } else if (action === 'decimal') {
+                if (freshInput) { current = '0.'; freshInput = false; }
+                else if (!current.includes('.')) current += '.';
+            } else if (action === 'operator') {
+                if (operator && !freshInput) calculate();
+                previous = current;
+                operator = value;
+                freshInput = true;
+                if (expressionEl) expressionEl.textContent = `${previous} ${displayOp(value)}`;
+            } else if (action === 'equals') {
+                if (!operator) return;
+                if (expressionEl) expressionEl.textContent = `${previous} ${displayOp(operator)} ${current} =`;
+                calculate();
+                operator = null;
+            } else if (action === 'clear') {
+                current = '0'; previous = ''; operator = null; freshInput = false;
+                if (expressionEl) expressionEl.textContent = '';
+            } else if (action === 'sign') {
+                current = String(parseFloat(current) * -1);
+            } else if (action === 'percent') {
+                current = String(parseFloat(current) / 100);
             }
 
-            const btn = [...document.querySelectorAll('.calc-btn')].find(b =>
-                (b.dataset.value  === key) ||
-                (key === '='      && b.dataset.action === 'equals') ||
-                (key === '.'      && b.dataset.action === 'decimal')
-            );
-            if (btn) btn.click();
+            updateDisplay();
         });
+    });
 
-// Calculator javascript ends
+    // 4. KEYBOARD SUPPORT
+    document.addEventListener('keydown', e => {
+        if (!calcOverlay || !calcOverlay.classList.contains('active')) return;
+
+        const map = {
+            '0':'0','1':'1','2':'2','3':'3','4':'4',
+            '5':'5','6':'6','7':'7','8':'8','9':'9',
+            '+':'+','-':'-','*':'*','/':'/',
+            'Enter':'=', '=':'=', 'Backspace':'back', '.':'.'
+        };
+        const key = map[e.key];
+        if (!key) return;
+
+        if (key === 'back') {
+            current = current.length > 1 ? current.slice(0, -1) : '0';
+            updateDisplay();
+            return;
+        }
+
+        const btn = [...document.querySelectorAll('.calc-btn')].find(b =>
+            (b.dataset.value === key) ||
+            (key === '=' && b.dataset.action === 'equals') ||
+            (key === '.' && b.dataset.action === 'decimal')
+        );
+        if (btn) btn.click();
+    });
+});// Calculator javascript ends
 
 
 
