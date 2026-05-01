@@ -148,11 +148,16 @@ document.getElementById('open-calc').onclick = (e) => {
 
 
 // Calculator Javasript
-        // ============================================================
-        // OPEN / CLOSE
-        // ============================================================
-        document.getElementById('close-calc').onclick = () =>
-            document.getElementById('calc-overlay').classList.remove('active');
+     // OPEN CALCULATOR
+document.getElementById('open-calc').onclick = (e) => {
+    e.preventDefault(); // This is the most important part—it stops the 404 error
+    document.getElementById('calc-overlay').classList.add('active');
+};
+
+// CLOSE CALCULATOR
+document.getElementById('close-calc').onclick = () => {
+    document.getElementById('calc-overlay').classList.remove('active');
+};
 
         // To open from anywhere in your site use:
         // document.getElementById('calc-overlay').classList.add('active');
