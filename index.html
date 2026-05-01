@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"\/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
 </head>
 <body>
     
@@ -15,8 +15,11 @@
  <header class="header">
     <div id="menu-btn" class="fas fa-bars"></div>
 
-    <!-- <a href="#" class="logo"><span>max</span>wheels </a> -->
-    <a href="#" class="logo"><img src="assests/PrimeLogoCopper.png" alt=""> </a>
+<a href="#" class="logo">
+    <img src="assests/PrimeLogoCopper.png" alt="Logo" class="logo-dark"> 
+    <img src="assests/PrimeLogoCopperLight.png" alt="Logo" class="logo-light"> 
+</a>
+
     <nav class="navbar">
         <a href="#home">Home</a>
         <a href="#Vehicles">Vehicles</a>
@@ -24,11 +27,80 @@
         <a href="#Featured">Featured</a>
         <a href="#Reviews">Reviews</a>
         <a href="#Contact">Contact</a>
+        <a href="calculator.html" id="open-calc">Calculator</a>
+
+        <!-- Dark Mode Toggle -->
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+                </button>
+        <!-- Dark Mode Toggle -->
+
+ 
+
     </nav>
 
+
+
+
+ <!-- ============================================================
+         CALCULATOR OVERLAY
+         Trigger this with: document.querySelector('.calc-overlay').classList.add('active')
+         ============================================================ -->
+    <div class="calc-overlay" id="calc-overlay">
+
+        <!-- Close button -->
+        <button class="calc-close" id="close-calc">&times;</button>
+
+        <div class="calculator">
+
+            <!-- Display -->
+            <div class="calc-display">
+                <div class="calc-expression" id="calc-expression"></div>
+                <div class="calc-result"     id="calc-result">0</div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="calc-buttons">
+
+                <!-- Row 1 -->
+                <button class="calc-btn special"   data-action="clear">AC</button>
+                <button class="calc-btn special"   data-action="sign">+/-</button>
+                <button class="calc-btn special"   data-action="percent">%</button>
+                <button class="calc-btn operator"  data-action="operator" data-value="/">÷</button>
+
+                <!-- Row 2 -->
+                <button class="calc-btn" data-action="number" data-value="7">7</button>
+                <button class="calc-btn" data-action="number" data-value="8">8</button>
+                <button class="calc-btn" data-action="number" data-value="9">9</button>
+                <button class="calc-btn operator"  data-action="operator" data-value="*">×</button>
+
+                <!-- Row 3 -->
+                <button class="calc-btn" data-action="number" data-value="4">4</button>
+                <button class="calc-btn" data-action="number" data-value="5">5</button>
+                <button class="calc-btn" data-action="number" data-value="6">6</button>
+                <button class="calc-btn operator"  data-action="operator" data-value="-">−</button>
+
+                <!-- Row 4 -->
+                <button class="calc-btn" data-action="number" data-value="1">1</button>
+                <button class="calc-btn" data-action="number" data-value="2">2</button>
+                <button class="calc-btn" data-action="number" data-value="3">3</button>
+                <button class="calc-btn operator"  data-action="operator" data-value="+">+</button>
+
+                <!-- Row 5 -->
+                <button class="calc-btn span2"     data-action="number"  data-value="0">0</button>
+                <button class="calc-btn"           data-action="decimal">.</button>
+                <button class="calc-btn equals"    data-action="equals">=</button>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Calculator Html ends -->
+
+    
     <div id="login-btn">
         <button class="btn">Login</button>
-        <i class="far fa-user"></i>
+        <i class="far fa-user" style="color: #d97706;"></i>
     </div>
 
  </header>
@@ -149,7 +221,7 @@
             <div class="swiper-slide box">
                 <img src="assests/vehicle-6M.png" alt="">
                 <div class="content">
-                  <h3>Mercedes-Benz GLE (Grey/Blue SUV)</h3>  
+                  <h3>Mercedes-Benz GLE (SUV)</h3>  
                   <div class="price"><span>price: </span> $78,000/- </div>
                   <p>
                     new
@@ -179,7 +251,7 @@
             <div class="swiper-slide box">
                 <img src="assests/vehicle-6.png" alt="">
                 <div class="content">
-                  <h3>Lamborghini Aventador (Orange)</h3>  
+                  <h3>Lamborghini Aventador</h3>  
                   <div class="price"><span>price: </span> $498,000/- </div>
                   <p>
                     new
@@ -228,7 +300,397 @@
 
   <!-- vehicles section ends -->
 
+<!-- Timer -->
 
+
+
+<section class="offer" id="offer">
+    <h1 class="heading"> Special <span>10% Discount</span> </h1>
+    <p class="offer-text">Limited time offer! Grab your dream car at a lower price.</p>
+    
+    <div id="countdown" class="countdown">
+        <div class="time-box"><span id="days">00</span><p>Days</p></div>
+        <div class="time-box"><span id="hours">00</span><p>Hours</p></div>
+        <div class="time-box"><span id="minutes">00</span><p>Mins</p></div>
+        <div class="time-box"><span id="seconds">00</span><p>Secs</p></div>
+    </div>
+</section>
+
+
+
+
+<!-- Timer -->
+  <!--PRIMA-->
+<head>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<!--services starts-->
+<section class="services" id="services">
+    <h1 class="heading"> our <span>services</span> </h1>
+    
+    <div class="box-container">
+        
+        <!-- Box 1 -->
+        <div class="box">
+            <i class="fas fa-car"></i>
+            <h3>car selling</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic, earum?</p>
+            <a href="#" class="btn">read more</a>
+        </div>
+
+        <!-- Box 2 -->
+        <div class="box">
+            <i class="fas fa-tools"></i>
+            <h3>parts repair</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic, earum?</p>
+            <a href="#" class="btn">read more</a>
+        </div>
+
+        <!-- Box 3 -->
+        <div class="box">
+            <i class="fas fa-car-crash"></i>
+            <h3>car insurance</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic, earum?</p>
+            <a href="#" class="btn">read more</a>
+        </div>
+
+        <!-- Box 4 -->
+        <div class="box">
+            <i class="fas fa-car-battery"></i>
+            <h3>battery replacement</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic, earum?</p>
+            <a href="#" class="btn">read more</a>
+        </div>
+
+        <!-- Box 5 -->
+        <div class="box">
+            <i class="fas fa-gas-pump"></i>
+            <h3>oil change</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic, earum?</p>
+            <a href="#" class="btn">read more</a>
+        </div>
+
+        <!-- Box 6 -->
+        <div class="box">
+            <i class="fas fa-headset"></i>
+            <h3>24/7 support</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic, earum?</p>
+            <a href="#" class="btn">read more</a>
+        </div>
+
+    </div> 
+</section>
+<!--services ends-->
+
+<!--featured starts-->
+<section class="featured" id="featured">
+
+    <h1 class="heading"> <span>featured</span> cars </h1>
+
+
+        <!-- First Slider Row -->
+    <div class="swiper featured-slider">
+
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide box">
+                <img src="assests/featured1.png" alt="">
+                <h3>Toyota Crown Sport (Red)</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="price"><span>price: </span> $52,000/- </div>
+                <a href="#" class="btn">check out</a>
+
+            </div>
+                <div class="swiper-slide box">
+                <img src="assests/vehicle-1M.png" alt="">
+                <h3>Lamborghini Aventador</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="price"><span>price: </span> $498,000/- </div>
+                <a href="#" class="btn">check out</a>
+            </div>
+
+            <div class="swiper-slide box">
+                <img src="assests/Primenew2.png" alt="">
+                <h3> BMW M8 Competition Coupe</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="price"><span>price: </span> $135,000/- </div>
+                <a href="#" class="btn">check out</a>
+            </div>
+
+            <div class="swiper-slide box">
+                <img src="assests/Primenew3.png" alt="">
+                <h3>Porsche 918 Spyder</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="price"><span>price: </span> $845,000/- </div>
+                <a href="#" class="btn">check out</a>
+            </div>
+
+            <div class="swiper-slide box">
+                <img src="assests/McLaren GT.png" alt="">
+                <h3>McLaren GT</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="price"><span>price: </span> $215,000/- </div>
+                <a href="#" class="btn">check out</a>
+            </div>
+
+        </div>
+
+        <div class="swiper-pagination"></div>
+
+    </div>
+
+    <!-- Second Slider Row -->
+
+    <div class="swiper featured-slider">
+
+        <div class="swiper-wrapper">
+
+            <!-- Car 1 -->
+            <div class="swiper-slide box">
+                <img src="assests/Nissan Juke.png" alt="">
+                <h3>Nissan Juke EV</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="price"><span>price: </span> $460,000/- </div>
+                <a href="#" class="btn">check out</a>
+            </div>
+
+            <!-- Car 2 -->
+            <div class="swiper-slide box">
+                <img src="assests/Tesla Model 3.png" alt="">
+                <h3>Tesla Model 3</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="price"><span>price: </span> $38,990/- </div>
+                <a href="#" class="btn">check out</a>
+            </div>
+
+            <!-- Car 3 -->
+            <div class="swiper-slide box">
+                <img src="assests/vehicle-3M.png" alt="">
+                <h3>Rolls-Royce Ghost</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="price"><span>price: </span> $340,000/- </div>
+                <a href="#" class="btn">check out</a>
+            </div>
+
+            <!-- Car 4 -->
+            <div class="swiper-slide box">
+                <img src="assests/vehicle-6M.png" alt="">
+                <h3>Mercedes-Benz (SUV)</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="price"><span>price: </span> $78,000/- </div>
+                <a href="#" class="btn">check out</a>
+            </div>
+
+                   <div class="swiper-slide box">
+                <img src="assests/Audi Q6 e-tron.png" alt="">
+                <h3>Audi Q6 e-tron</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="price"><span>price: </span> $63,800/- </div>
+                <a href="#" class="btn">check out</a>
+            </div>
+
+        </div>
+
+        <div class="swiper-pagination"></div>
+
+    </div>
+
+</section>
+<!--featured ends-->
+
+<!--PRIMA-->
+
+
+
+
+<!-- Sumuni -->
+
+<!-- newsletter section starts -->
+<section class="newsletter">
+    <h3>Subscribe For Latest Updates</h3>
+    <p>Get the latest news and special offers directly in your inbox.</p>
+    <form action="">
+        <input type="email" placeholder="         enter your email" id="email-input">
+        <input type="submit" value="Subscribe" class="subscribe">
+    </form>
+</section>
+<!--newsletter section ends-->
+
+
+
+<!-- review section starts -->
+<section class="review" id="review">
+    <h1 class="heading">Client's <span>Review</span></h1>
+
+    <div class="swiper review-slider">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide box">
+                <!-- Ensure these image names match your actual files exactly -->
+                <img src="assests/images (1).jpg.jpeg" alt="">
+                <div class="content">
+                    <p>Excellent service! I found my dream car at a great price. The team was very professional and helpful throughout the process.</p>
+                    <h3>John Deo</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide box">
+                <!-- Ensure these image names match your actual files exactly -->
+                <img src="assests/image 2.jpg.jpeg" alt="">
+                <div class="content">
+                    <p>Excellent service! I found my dream car at a great price. The team was very professional and helpful throughout the process.</p>
+                    <h3>John Deo</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide box">
+                <!-- Ensure these image names match your actual files exactly -->
+                <img src="assests/images (3).jpg.jpeg" alt="">
+                <div class="content">
+                    <p>Excellent service! I found my dream car at a great price. The team was very professional and helpful throughout the process.</p>
+                    <h3>John Deo</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide box">
+                <!-- Ensure these image names match your actual files exactly -->
+                <img src="assests/image 4.jpg.jpeg" alt="">
+                <div class="content">
+                    <p>Excellent service! I found my dream car at a great price. The team was very professional and helpful throughout the process.</p>
+                    <h3>John Deo</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide box">
+                <!-- Ensure these image names match your actual files exactly -->
+                <img src="assests/images (5).jpg.jpeg" alt="">
+                <div class="content">
+                    <p>Excellent service! I found my dream car at a great price. The team was very professional and helpful throughout the process.</p>
+                    <h3>John Deo</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide box">
+                <!-- Ensure these image names match your actual files exactly -->
+                <img src="assests/image 6.jpg.jpeg" alt="">
+                <div class="content">
+                    <p>Excellent service! I found my dream car at a great price. The team was very professional and helpful throughout the process.</p>
+                    <h3>John Deo</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</section>
+
+
+<!-- Sumuni -->
+ 
   <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
 
     <script src="script.js"></script>
