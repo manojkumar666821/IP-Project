@@ -241,12 +241,17 @@ body.dark-mode .header .navbar a:hover   { color: var(--yellow) !important; }
     opacity: 0;
     transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.login-form-container.active { top: 0; opacity: 1; }
+
+.login-form-container.active {
+    top: 0;
+    opacity: 1;
+}
 
 .login-form-container form {
     padding: 3rem 2rem;
     margin: 2rem;
-    width: 40rem;
+    width: 95%;
+    max-width: 40rem;
     text-align: center;
     border-radius: 1.5rem;
     background: rgba(255, 255, 255, 0.05);
@@ -255,12 +260,14 @@ body.dark-mode .header .navbar a:hover   { color: var(--yellow) !important; }
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
 }
+
 .login-form-container form h3 {
     color: var(--black);
     font-size: 2.5rem;
     padding-bottom: 1rem;
     text-transform: uppercase;
 }
+
 .login-form-container form .box {
     margin: 0.7rem 0;
     width: 100%;
@@ -272,23 +279,43 @@ body.dark-mode .header .navbar a:hover   { color: var(--yellow) !important; }
     border-radius: .5rem;
     background: rgba(255, 255, 255, 0.1);
 }
-.login-form-container form .box::placeholder { color: var(--light-color); }
+
+.login-form-container form .box::placeholder {
+    color: var(--light-color);
+}
 
 .login-form-container form p {
     padding: 1rem 0;
     font-size: 1.5rem;
     color: var(--light-color);
 }
+
 .login-form-container form p a {
     color: var(--yellow);
     text-decoration: underline;
 }
+
 .login-form-container form .buttons {
     display: flex;
     align-items: center;
     gap: 1rem;
+    width: 100%;
 }
-.login-form-container form .btn  { display: block; width: 100%; margin: 0.5rem 0; }
+
+.login-form-container form .btn {
+    display: block;
+    width: 100%;
+    margin: 0.5rem 0;
+    padding: 1rem 0.5rem;
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+
+.login-form-container form .buttons .btn {
+    flex: 1;
+    font-size: 1.4rem;
+}
+
 .login-form-container #close-login-form {
     position: absolute;
     top: 1.5rem;
@@ -297,7 +324,6 @@ body.dark-mode .header .navbar a:hover   { color: var(--yellow) !important; }
     color: var(--black);
     cursor: pointer;
 }
-
 
 
 /* ============================================================
