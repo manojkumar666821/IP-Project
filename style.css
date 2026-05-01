@@ -968,5 +968,26 @@ body.dark-mode .calc-btn.equals:hover { background: var(--black); color: var(--y
 
 .contact .row form .btn {
     margin-top: 1rem;
-    width: 100%; /* Full width button for better mobile usability */
+    width: 100%;
+}
+.contact .row form .box {
+    margin: .7rem 0;
+    width: 100%;
+    border: var(--border);
+    padding: 1.5rem; 
+    font-size: 1.6rem;
+    /* FIX: Hardcoded black text so it never turns white */
+    color: #130f40; 
+    text-transform: none;
+    border-radius: .5rem;
+    /* FIX: Hardcoded light background so it stays bright */
+    background: #ffffff; 
+    transition: .2s linear;
+}
+
+/* Ensure the text stays black when the user is typing */
+.contact .row form .box:focus {
+    color: #000;
+    background: #fff;
+    border-color: var(--yellow);
 }
