@@ -854,3 +854,119 @@ body.dark-mode .calc-btn.equals:hover { background: var(--black); color: var(--y
 @media (max-width: 450px) {
     html { font-size: 50%; }
 }
+.footer {
+    background: var(--light-yellow);
+}
+
+/* Footer Section */
+
+.footer .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap: 1.5rem;
+}
+
+.footer .box-container .box h3 {
+    color: var(--black);
+    font-size: 2.2rem;
+    padding: 1rem 0;
+}
+
+.footer .box-container .box a {
+    color: var(--black);
+    font-size: 1.6rem;
+    display: block;
+    padding: 1rem 0;
+}
+
+.footer .box-container .box a:hover i {
+    padding-right: 2rem;
+}
+
+.footer .credit {
+    text-align: center;
+    border-top: var(--border);
+    padding: 1rem;
+    padding-top: 2.5rem;
+    margin-top: 2.5rem;
+    font-size: 2rem;
+}
+
+
+
+/* ============================================================
+   CONTACT SECTION (MERGED & OPTIMIZED)
+   ============================================================ */
+
+.contact .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 2rem;
+    /* Glassmorphism effect matches your theme */
+    background: rgba(255, 255, 255, 0.05); 
+    border-radius: .5rem;
+}
+
+/* Map styling */
+.contact .row .map {
+    flex: 1 1 42rem;
+    width: 100%;
+    padding: 1rem;
+    border: var(--border);
+    border-radius: .5rem;
+    box-shadow: var(--box-shadow);
+    min-height: 40rem; 
+    background: var(--light-yellow);
+}
+
+.contact .row .map:hover {
+    border-color: var(--yellow);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+}
+
+/* Targeting the form tag directly */
+.contact .row form {
+    flex: 1 1 42rem;
+    padding: 3rem 2rem;
+    border: var(--border);
+    border-radius: .5rem;
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    
+    background: var(--light-yellow);
+
+}
+
+.contact .row form h3 {
+    font-size: 3rem;
+    color: var(--black);
+    padding-bottom: 1rem;
+    text-transform: capitalize;
+}
+
+.contact .row form .box {
+    margin: .7rem 0;
+    width: 100%;
+    border: var(--border);
+    padding: 1.5rem; /* Matches your Maxwheels reference padding */
+    font-size: 1.6rem;
+    color: var(--black);
+    text-transform: none;
+    border-radius: .5rem;
+    background: #f7f7f7;
+    transition: .2s linear;
+}
+.contact .row form:hover {
+    border-color: var(--yellow);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+}
+.contact .row form textarea {
+    height: 15rem;
+    resize: none;
+}
+
+.contact .row form .btn {
+    margin-top: 1rem;
+    width: 100%; /* Full width button for better mobile usability */
+}
