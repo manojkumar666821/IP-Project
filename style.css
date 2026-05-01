@@ -241,7 +241,6 @@ body.dark-mode .header .navbar a:hover   { color: var(--yellow) !important; }
     opacity: 0;
     transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 .login-form-container.active { top: 0; opacity: 1; }
 
 .login-form-container form {
@@ -256,14 +255,12 @@ body.dark-mode .header .navbar a:hover   { color: var(--yellow) !important; }
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
 }
-
 .login-form-container form h3 {
     color: var(--black);
     font-size: 2.5rem;
     padding-bottom: 1rem;
     text-transform: uppercase;
 }
-
 .login-form-container form .box {
     margin: 0.7rem 0;
     width: 100%;
@@ -275,7 +272,6 @@ body.dark-mode .header .navbar a:hover   { color: var(--yellow) !important; }
     border-radius: .5rem;
     background: rgba(255, 255, 255, 0.1);
 }
-
 .login-form-container form .box::placeholder { color: var(--light-color); }
 
 .login-form-container form p {
@@ -283,26 +279,16 @@ body.dark-mode .header .navbar a:hover   { color: var(--yellow) !important; }
     font-size: 1.5rem;
     color: var(--light-color);
 }
-
 .login-form-container form p a {
     color: var(--yellow);
     text-decoration: underline;
 }
-
 .login-form-container form .buttons {
     display: flex;
     align-items: center;
     gap: 1rem;
-    color: var(--yellow) !important;
 }
-
-
-.login-form-container form .btn  { 
-    display: block;
-    width: 100%;
-    margin: 0.5rem 0;
-    color: var(--yellow) !important; }
-
+.login-form-container form .btn  { display: block; width: 100%; margin: 0.5rem 0; }
 .login-form-container #close-login-form {
     position: absolute;
     top: 1.5rem;
